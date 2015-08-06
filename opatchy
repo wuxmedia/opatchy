@@ -1,0 +1,18 @@
+#!/bin/bash
+# Usage - opatchy domain.com
+# looks for apache2 sites, in the debian default  /etc/apache2/sites-enabled/
+
+# Do some testing or something later
+
+# get domain from command line
+DOM=$1
+# NS
+echo "$DOM has NS" $(dig NS "$DOM" +short)
+# A record
+host  "$DOM"
+# get the vhost path
+VHOST=$(apache2ctl -S 2>&1 | grep " $DOM " | cut -d "(" -f2 | cut -d ":" -f1)
+# grep it to bits
+grep "DocumentRoot" "$VHOST"
+grep "Log" "$VHOST"
+grep "AuthUserFile" "$VHOST"
