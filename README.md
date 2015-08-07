@@ -4,5 +4,5 @@ on debian based only
 requires dig, and host, and apache, and bash, you get the point...
 
 Usage:
-Type the opatchy <domain.com>
+Type 'opatchy (domain.com>)'
 that's it.
